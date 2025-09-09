@@ -1,5 +1,5 @@
-import { config } from "dotenv"
+import { config } from 'dotenv'
 
 config()
 
-export const gemeniApiKey: string = process.env.GEMINI_API_KEY || "No key"
+export const GEMINI_API_KEY: string = process.env.GEMINI_API_KEY || 'No key'
