@@ -1,3 +1,3 @@
-import { NumberSchema } from "./common.schema"
+import { NumberSchema } from '../common.schema'
 
-export const RatingSchema = NumberSchema.brand("Rating")
+export const RatingSchema = NumberSchema.brand('Rating')

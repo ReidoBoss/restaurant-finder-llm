@@ -1,5 +1,5 @@
-import { z } from "zod"
-import { BooleanSchema, NumberSchema, StringSchema } from "./common.schema"
+import { z } from 'zod'
+import { BooleanSchema, NumberSchema, StringSchema } from '../common.schema'
 
 // "hours": {
 //   "display": "string",

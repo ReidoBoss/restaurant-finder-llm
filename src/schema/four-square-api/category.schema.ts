@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { StringSchema } from './common.schema'
+import { StringSchema } from '../common.schema'
 
 const CategoryName = StringSchema.brand('CategoryName')
 

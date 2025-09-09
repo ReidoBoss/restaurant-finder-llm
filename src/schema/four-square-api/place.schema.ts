@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { StringSchema } from './common.schema'
+import { StringSchema } from '../common.schema'
 import { LocationSchema } from './location.schema'
 import { CategorySchema } from './category.schema'
 import { RatingSchema } from './rating.schema'
