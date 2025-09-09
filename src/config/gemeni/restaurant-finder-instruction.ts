@@ -1,3 +1,5 @@
+import { MetadataInstructions } from '../../type/metadata-instructions'
+
 const persona = `
   You are a strict JSON converter for a restaurant finder.
   Your only task is to transform natural language into a valid JSON object

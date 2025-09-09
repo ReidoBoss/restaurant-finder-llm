@@ -7,24 +7,27 @@ import {
   GemeniJsonParsingError,
   RestaurantParamsParsingError,
 } from '../domain/entity/error/restaurant-finder-llm-error'
+import type { RestaurantParams } from '../../type/restaurant-params'
 
 const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY })
 
-export async function ask(question: string) {
+export async function create(parameter: {
+  question: string
+}): Promise<RestaurantParams> {
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: [
         { role: 'model', parts: [{ text: instructions }] },
-        { role: 'user', parts: [{ text: question }] },
+        { role: 'user', parts: [{ text: parameter.question }] },
       ],
     })
     const { text } = response
 
     const convertedJson = JSON.parse(text || '')
 
-    const parsedJson = RestaurantParamsSchema.safeParse(convertedJson)
-    const { success, data } = parsedJson
+    const safeParsedJson = RestaurantParamsSchema.safeParse(convertedJson)
+    const { success, data } = safeParsedJson
     if (!success) throw new RestaurantParamsParsingError()
     return data
   } catch (error) {

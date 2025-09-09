@@ -6,11 +6,20 @@ import {
   FourPlaceApiJsonParsingError,
   FourPlaceApiUnauthorizedError,
 } from '../domain/entity/error/four-square-api-error'
-import { RestaurantParams } from '../../type/restaurant-params'
+import type { RestaurantParams } from '../../type/restaurant-params'
+import type { PlaceSearchResults } from '../../type/four-square'
 
+/**
+ * Sets up the API KEY
+ */
 foursquarePlaces.auth(FSQR_API_KEY)
 
-async function get(params: RestaurantParams) {
+/**
+ *
+ * @param params the parameter of how to choose a restuarant place
+ * @returns
+ */
+async function get(params: RestaurantParams): Promise<PlaceSearchResults> {
   try {
     const result = await foursquarePlaces.placeSearch({
       'X-Places-Api-Version': X_PLACES_API_VERSION,
