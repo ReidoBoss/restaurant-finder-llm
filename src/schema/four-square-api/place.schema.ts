@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { StringSchema } from '../common.schema'
+import { NumberSchema, StringSchema } from '../common.schema'
 import { LocationSchema } from './location.schema'
 import { CategorySchema } from './category.schema'
 import { RatingSchema } from './rating.schema'
@@ -11,6 +11,10 @@ const NameSchema = StringSchema.brand('PlaceName')
 export const PlaceSchema = z.object({
   name: NameSchema,
   location: LocationSchema,
+  email: StringSchema.nullish(),
+  menu: StringSchema.nullish(),
+  date_closed: StringSchema.nullish(),
+  distance: NumberSchema.nullish(),
   categories: CategorySchema.array(),
   rating: RatingSchema.nullish(),
   price: PriceSchema.nullish(),

@@ -18,9 +18,8 @@ const rules = `
 const exampleReturn = {
   query: 'sushi',
   near: 'downtown Los Angeles',
-  max_price: 1,
+  price: 1,
   open_now: true,
-  sort: 'RATING',
 }
 
 const anotherExampleReturn = {
