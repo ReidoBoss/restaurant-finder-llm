@@ -29,7 +29,6 @@ async function get(params: RestaurantParams): Promise<PlaceSearchResults> {
       ...params,
     })
     const { data, res } = result
-    console.log(data)
 
     if (res.status === 400) throw new FourSquareApiBadRequestError()
     if (res.status === 401) throw new FourSquareApiUnauthorizedError()
