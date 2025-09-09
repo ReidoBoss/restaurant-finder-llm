@@ -1,4 +1,4 @@
-export class FourplaceError extends Error {}
-export class FourPlaceApiBadRequestError extends FourplaceError {}
-export class FourPlaceApiUnauthorizedError extends FourplaceError {}
-export class FourPlaceApiJsonParsingError extends FourplaceError {}
+export class FourSquareError extends Error {}
+export class FourSquareApiBadRequestError extends FourSquareError {}
+export class FourSquareApiUnauthorizedError extends FourSquareError {}
+export class FourSquareApiJsonParsingError extends FourSquareError {}
