@@ -2,6 +2,7 @@ import express from 'express'
 
 import { z } from 'zod'
 import { config } from 'dotenv'
+import { ALLOWED_CODES } from './config/allowed-codes'
 
 import router from './router'
 
@@ -25,3 +26,5 @@ app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
 })
 router(app)
+
+console.log(ALLOWED_CODES)
