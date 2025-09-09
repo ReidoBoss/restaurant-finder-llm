@@ -1,16 +1,19 @@
-import type * as types from './types';
+import type * as types from './types'
 import type { ConfigOptions, FetchResponse } from 'api/dist/core'
-import Oas from 'oas';
-import APICore from 'api/dist/core';
-import definition from './openapi.json';
+import Oas from 'oas'
+import APICore from 'api/dist/core'
+import definition from './openapi.json'
 
 class SDK {
-  spec: Oas;
-  core: APICore;
+  spec: Oas
+  core: APICore
 
   constructor() {
-    this.spec = Oas.init(definition);
-    this.core = new APICore(this.spec, 'fsq-developers-places/20250617 (api/6.1.3)');
+    this.spec = Oas.init(definition)
+    this.core = new APICore(
+      this.spec,
+      'fsq-developers-places/20250617 (api/6.1.3)'
+    )
   }
 
   /**
@@ -21,7 +24,7 @@ class SDK {
    * should be represented in milliseconds.
    */
   config(config: ConfigOptions) {
-    this.core.setConfig(config);
+    this.core.setConfig(config)
   }
 
   /**
@@ -46,8 +49,8 @@ class SDK {
    * @param values Your auth credentials for the API; can specify up to two strings or numbers.
    */
   auth(...values: string[] | number[]) {
-    this.core.setAuth(...values);
-    return this;
+    this.core.setAuth(...values)
+    return this
   }
 
   /**
@@ -70,7 +73,7 @@ class SDK {
    * @param variables An object of variables to replace into the server URL.
    */
   server(url: string, variables = {}) {
-    this.core.setServer(url, variables);
+    this.core.setServer(url, variables)
   }
 
   /**
@@ -79,14 +82,16 @@ class SDK {
    *
    * @summary Autocomplete
    */
-  autocomplete(metadata: types.AutocompleteMetadataParam): Promise<FetchResponse<200, types.AutocompleteResponse200>> {
-    return this.core.fetch('/autocomplete', 'get', metadata);
+  autocomplete(
+    metadata: types.AutocompleteMetadataParam
+  ): Promise<FetchResponse<200, types.AutocompleteResponse200>> {
+    return this.core.fetch('/autocomplete', 'get', metadata)
   }
 
   /**
    * Search for places in the FSQ Places database using a location and querying by name,
    * category name, telephone number, taste label, or chain name. For example, search for
-   * "coffee" to get back a list of recommended coffee shops. 
+   * "coffee" to get back a list of recommended coffee shops.
    *
    * You may pass a location with your request by using one of the following options. If none
    * of the following options are passed, Place Search defaults to geolocation using ip
@@ -97,8 +102,10 @@ class SDK {
    *
    * @summary Place Search
    */
-  placeSearch(metadata: types.PlaceSearchMetadataParam): Promise<FetchResponse<200, types.PlaceSearchResponse200>> {
-    return this.core.fetch('/places/search', 'get', metadata);
+  placeSearch(
+    metadata: types.PlaceSearchMetadataParam
+  ): Promise<FetchResponse<200, types.PlaceSearchResponse200>> {
+    return this.core.fetch('/places/search', 'get', metadata)
   }
 
   /**
@@ -106,8 +113,10 @@ class SDK {
    *
    * @summary Get Place Details
    */
-  placeDetails(metadata: types.PlaceDetailsMetadataParam): Promise<FetchResponse<200, types.PlaceDetailsResponse200>> {
-    return this.core.fetch('/places/{fsq_place_id}', 'get', metadata);
+  placeDetails(
+    metadata: types.PlaceDetailsMetadataParam
+  ): Promise<FetchResponse<200, types.PlaceDetailsResponse200>> {
+    return this.core.fetch('/places/{fsq_place_id}', 'get', metadata)
   }
 
   /**
@@ -115,20 +124,24 @@ class SDK {
    *
    * @summary Get Place Tips
    */
-  placeTips(metadata: types.PlaceTipsMetadataParam): Promise<FetchResponse<200, types.PlaceTipsResponse200>> {
-    return this.core.fetch('/places/{fsq_place_id}/tips', 'get', metadata);
+  placeTips(
+    metadata: types.PlaceTipsMetadataParam
+  ): Promise<FetchResponse<200, types.PlaceTipsResponse200>> {
+    return this.core.fetch('/places/{fsq_place_id}/tips', 'get', metadata)
   }
 
   /**
-   * Retrieve photos for a FSQ Place using the fsq_place_id. 
+   * Retrieve photos for a FSQ Place using the fsq_place_id.
    *
    * To retrieve photos from a Photos response, learn [how to assemble photo
    * URLs](https://docs.foursquare.com/reference/photos-guide#assembling-a-photo-url).
    *
    * @summary Get Place Photos
    */
-  placePhotos(metadata: types.PlacePhotosMetadataParam): Promise<FetchResponse<200, types.PlacePhotosResponse200>> {
-    return this.core.fetch('/places/{fsq_place_id}/photos', 'get', metadata);
+  placePhotos(
+    metadata: types.PlacePhotosMetadataParam
+  ): Promise<FetchResponse<200, types.PlacePhotosResponse200>> {
+    return this.core.fetch('/places/{fsq_place_id}/photos', 'get', metadata)
   }
 
   /**
@@ -136,8 +149,14 @@ class SDK {
    *
    * @summary Merge Places
    */
-  suggestMerge(metadata: types.SuggestMergeMetadataParam): Promise<FetchResponse<200, types.SuggestMergeResponse200>> {
-    return this.core.fetch('/places/{fsq_place_id}/suggest/merge', 'post', metadata);
+  suggestMerge(
+    metadata: types.SuggestMergeMetadataParam
+  ): Promise<FetchResponse<200, types.SuggestMergeResponse200>> {
+    return this.core.fetch(
+      '/places/{fsq_place_id}/suggest/merge',
+      'post',
+      metadata
+    )
   }
 
   /**
@@ -147,8 +166,14 @@ class SDK {
    *
    * @summary Edit a Place
    */
-  placeSuggestEdit(metadata: types.PlaceSuggestEditMetadataParam): Promise<FetchResponse<200, types.PlaceSuggestEditResponse200>> {
-    return this.core.fetch('/places/{fsq_place_id}/suggest/edit', 'post', metadata);
+  placeSuggestEdit(
+    metadata: types.PlaceSuggestEditMetadataParam
+  ): Promise<FetchResponse<200, types.PlaceSuggestEditResponse200>> {
+    return this.core.fetch(
+      '/places/{fsq_place_id}/suggest/edit',
+      'post',
+      metadata
+    )
   }
 
   /**
@@ -157,8 +182,14 @@ class SDK {
    *
    * @summary Remove a Place
    */
-  placeSuggestRemove(metadata: types.PlaceSuggestRemoveMetadataParam): Promise<FetchResponse<200, types.PlaceSuggestRemoveResponse200>> {
-    return this.core.fetch('/places/{fsq_place_id}/suggest/remove', 'post', metadata);
+  placeSuggestRemove(
+    metadata: types.PlaceSuggestRemoveMetadataParam
+  ): Promise<FetchResponse<200, types.PlaceSuggestRemoveResponse200>> {
+    return this.core.fetch(
+      '/places/{fsq_place_id}/suggest/remove',
+      'post',
+      metadata
+    )
   }
 
   /**
@@ -167,8 +198,14 @@ class SDK {
    *
    * @summary Flag a Place
    */
-  placeFlag(metadata: types.PlaceFlagMetadataParam): Promise<FetchResponse<200, types.PlaceFlagResponse200>> {
-    return this.core.fetch('/places/{fsq_place_id}/suggest/flag', 'post', metadata);
+  placeFlag(
+    metadata: types.PlaceFlagMetadataParam
+  ): Promise<FetchResponse<200, types.PlaceFlagResponse200>> {
+    return this.core.fetch(
+      '/places/{fsq_place_id}/suggest/flag',
+      'post',
+      metadata
+    )
   }
 
   /**
@@ -177,8 +214,10 @@ class SDK {
    *
    * @summary Suggest a New Place
    */
-  placesSuggestPlace(metadata: types.PlacesSuggestPlaceMetadataParam): Promise<FetchResponse<200, types.PlacesSuggestPlaceResponse200>> {
-    return this.core.fetch('/places/suggest/place', 'post', metadata);
+  placesSuggestPlace(
+    metadata: types.PlacesSuggestPlaceMetadataParam
+  ): Promise<FetchResponse<200, types.PlacesSuggestPlaceResponse200>> {
+    return this.core.fetch('/places/suggest/place', 'post', metadata)
   }
 
   /**
@@ -186,8 +225,10 @@ class SDK {
    *
    * @summary Get Suggestion Status
    */
-  placeSuggestStatus(metadata: types.PlaceSuggestStatusMetadataParam): Promise<FetchResponse<200, types.PlaceSuggestStatusResponse200>> {
-    return this.core.fetch('/places/suggest/status', 'get', metadata);
+  placeSuggestStatus(
+    metadata: types.PlaceSuggestStatusMetadataParam
+  ): Promise<FetchResponse<200, types.PlaceSuggestStatusResponse200>> {
+    return this.core.fetch('/places/suggest/status', 'get', metadata)
   }
 
   /**
@@ -195,8 +236,10 @@ class SDK {
    *
    * @summary Get Places With Pending Suggested Edits
    */
-  placeTopVenueWoes(metadata: types.PlaceTopVenueWoesMetadataParam): Promise<FetchResponse<200, types.PlaceTopVenueWoesResponse200>> {
-    return this.core.fetch('/places/suggest/review', 'get', metadata);
+  placeTopVenueWoes(
+    metadata: types.PlaceTopVenueWoesMetadataParam
+  ): Promise<FetchResponse<200, types.PlaceTopVenueWoesResponse200>> {
+    return this.core.fetch('/places/suggest/review', 'get', metadata)
   }
 
   /**
@@ -209,8 +252,10 @@ class SDK {
    *
    * @summary Find Geotagging Candidates
    */
-  geotaggingCandidates(metadata: types.GeotaggingCandidatesMetadataParam): Promise<FetchResponse<200, types.GeotaggingCandidatesResponse200>> {
-    return this.core.fetch('/geotagging/candidates', 'get', metadata);
+  geotaggingCandidates(
+    metadata: types.GeotaggingCandidatesMetadataParam
+  ): Promise<FetchResponse<200, types.GeotaggingCandidatesResponse200>> {
+    return this.core.fetch('/geotagging/candidates', 'get', metadata)
   }
 
   /**
@@ -218,14 +263,45 @@ class SDK {
    *
    * @summary Confirm Geotagging Candidate Selection
    */
-  geotaggingConfirm(metadata: types.GeotaggingConfirmMetadataParam): Promise<FetchResponse<200, types.GeotaggingConfirmResponse200>> {
-    return this.core.fetch('/geotagging/confirm', 'post', metadata);
+  geotaggingConfirm(
+    metadata: types.GeotaggingConfirmMetadataParam
+  ): Promise<FetchResponse<200, types.GeotaggingConfirmResponse200>> {
+    return this.core.fetch('/geotagging/confirm', 'post', metadata)
   }
 }
 
-const createSDK = (() => { return new SDK(); })()
-;
+const createSDK = (() => {
+  return new SDK()
+})()
+export default createSDK
 
-export default createSDK;
-
-export type { AutocompleteMetadataParam, AutocompleteResponse200, GeotaggingCandidatesMetadataParam, GeotaggingCandidatesResponse200, GeotaggingConfirmMetadataParam, GeotaggingConfirmResponse200, PlaceDetailsMetadataParam, PlaceDetailsResponse200, PlaceFlagMetadataParam, PlaceFlagResponse200, PlacePhotosMetadataParam, PlacePhotosResponse200, PlaceSearchMetadataParam, PlaceSearchResponse200, PlaceSuggestEditMetadataParam, PlaceSuggestEditResponse200, PlaceSuggestRemoveMetadataParam, PlaceSuggestRemoveResponse200, PlaceSuggestStatusMetadataParam, PlaceSuggestStatusResponse200, PlaceTipsMetadataParam, PlaceTipsResponse200, PlaceTopVenueWoesMetadataParam, PlaceTopVenueWoesResponse200, PlacesSuggestPlaceMetadataParam, PlacesSuggestPlaceResponse200, SuggestMergeMetadataParam, SuggestMergeResponse200 } from './types';
+export type {
+  AutocompleteMetadataParam,
+  AutocompleteResponse200,
+  GeotaggingCandidatesMetadataParam,
+  GeotaggingCandidatesResponse200,
+  GeotaggingConfirmMetadataParam,
+  GeotaggingConfirmResponse200,
+  PlaceDetailsMetadataParam,
+  PlaceDetailsResponse200,
+  PlaceFlagMetadataParam,
+  PlaceFlagResponse200,
+  PlacePhotosMetadataParam,
+  PlacePhotosResponse200,
+  PlaceSearchMetadataParam,
+  PlaceSearchResponse200,
+  PlaceSuggestEditMetadataParam,
+  PlaceSuggestEditResponse200,
+  PlaceSuggestRemoveMetadataParam,
+  PlaceSuggestRemoveResponse200,
+  PlaceSuggestStatusMetadataParam,
+  PlaceSuggestStatusResponse200,
+  PlaceTipsMetadataParam,
+  PlaceTipsResponse200,
+  PlaceTopVenueWoesMetadataParam,
+  PlaceTopVenueWoesResponse200,
+  PlacesSuggestPlaceMetadataParam,
+  PlacesSuggestPlaceResponse200,
+  SuggestMergeMetadataParam,
+  SuggestMergeResponse200,
+} from './types'
