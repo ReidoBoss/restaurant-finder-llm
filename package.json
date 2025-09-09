@@ -1,0 +1,26 @@
+{
+  "name": "restaurant-finder-llm",
+  "version": "1.0.0",
+  "description": "pioneer dev ai coding challenge",
+  "license": "ISC",
+  "author": "Stephen Sagarino Jr.",
+  "type": "commonjs",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "nodemon ./src/index.ts"
+  },
+  "dependencies": {
+    "@api/fsq-developers-places": "file:.api/apis/fsq-developers-places",
+    "@google/genai": "^1.17.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.1",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
